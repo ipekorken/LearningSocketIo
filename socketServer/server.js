@@ -1,7 +1,23 @@
-const http = require('http').createServer();
+const express = require('express');
+require('./db/dbConnection');
+const app = express();
+const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
-http.listen(3000);
+const userRouter = require('./router/userRouter');
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/api/users', userRouter);
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Welcome!',
+  });
+});
+http.listen(3000, () => {
+  console.log('3000 portunda server çalışmaya başladı.');
+});
+//----------------------------socket----------------------------//
 
 //----------------------------user count----------------------------//
 let count = 0;

@@ -29,11 +29,6 @@ const UserCount = ({navigation}) => {
       <TouchableOpacity onPress={() => navigation.navigate('ChangeBackground')}>
         <Text style={styles.btnTxt}>Go to Change Background</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.btnTouch}
-        onPress={() => navigation.navigate('Chat')}>
-        <Text style={styles.btnTxt}>Go to Chat</Text>
-      </TouchableOpacity>
     </SafeAreaView>
   );
 };

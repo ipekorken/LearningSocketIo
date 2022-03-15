@@ -1,0 +1,19 @@
+@BASE_URL = http://localhost:3000/api
+POST {{BASE_URL}}/users/register
+Content-Type: application/json
+
+{
+    "name" : "İpek",
+    "surname" : "Örken",
+    "email" : "ipek@mail.com",
+    "password" : "ipekPsw"
+}
+###
+POST {{BASE_URL}}/users/login
+Content-Type: application/json
+
+{
+    "email" : "ipek@mail.com",
+    "password" : "ipekPsw"
+}
+###

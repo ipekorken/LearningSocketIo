@@ -22,6 +22,7 @@ const ChangeBackground = ({navigation}) => {
   }
 
   useEffect(() => {
+    changeBgColor();
     socket.on('changeBgColor', color => {
       dispatch(setBgColor(color));
     });
