@@ -70,6 +70,7 @@ const Chat = ({navigation}) => {
       isAdmin: true,
     },
   ]);
+  const [inputMsg, setInputMsg] = useState('');
   const [expanded, setExpanded] = useState(false);
   function handleExpanded() {
     setExpanded(!expanded);
@@ -128,6 +129,9 @@ const Chat = ({navigation}) => {
             <TextInput
               placeholder="Mesajınızı girin..."
               style={styles.sendInputTxt}
+              onChangeText={text => setInputMsg(text)}
+              //autoCapitalize="none"
+              autoCorrect={false}
             />
           </View>
           <View
