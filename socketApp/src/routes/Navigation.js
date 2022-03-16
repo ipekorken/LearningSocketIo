@@ -1,30 +1,23 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {UserCount, ChangeBackground, Chat} from '../screens';
-
-const Stack = createNativeStackNavigator();
+import {useSelector} from 'react-redux';
+import {MainNavigation, AuthNavigation} from './';
 
 const Navigation = () => {
+  const userToken = useSelector(state => state.app.userToken);
+  const [isLogged, setIsLogged] = useState(false);
+
+  useEffect(() => {
+    if (userToken !== '') {
+      setIsLogged(true);
+    } else {
+      setIsLogged(false);
+    }
+  }, []);
+
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="UserCount"
-          component={UserCount}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="ChangeBackground"
-          component={ChangeBackground}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Chat"
-          component={Chat}
-          options={{headerShown: false}}
-        />
-      </Stack.Navigator>
+      {isLogged ? <MainNavigation /> : <AuthNavigation />}
     </NavigationContainer>
   );
 };

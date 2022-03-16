@@ -1,5 +1,5 @@
 const User = require('../models/userModel');
-var createError = require('http-errors');
+const createError = require('http-errors');
 const bcrypt = require('bcrypt');
 
 const listAllUsers = async (req, res) => {
